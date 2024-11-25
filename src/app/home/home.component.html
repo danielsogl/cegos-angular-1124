@@ -10,18 +10,20 @@
   </p>
 </app-card> -->
 
-<h2>{{ dummysingleentry.title }}</h2>
+<button (click)="foo()">Click me!</button>
+
+<h2>{{ dataService.dummysingleentry.title }}</h2>
 
 <!-- Step 1: add a single dummy entry directly -->
 <app-blog-entry
-  [entry]="dummysingleentry"
-  (entryChange)="dummysingleentry = $event"
+  [entry]="dataService.dummysingleentry"
+  (entryChange)="dataService.dummysingleentry = $event"
 ></app-blog-entry>
 
 <!-- With double data binding -->
-<app-blog-entry [(entry)]="dummysingleentry"></app-blog-entry>
+<app-blog-entry [(entry)]="dataService.dummysingleentry"></app-blog-entry>
 
 <!-- Step 2: forward a full list of entries to the blog-list component -->
-<app-blog-list [blogentries]="blogentries"></app-blog-list>
+<app-blog-list [blogentries]="dataService.blogentries"></app-blog-list>
 <hr />
 <app-blog-form></app-blog-form>
