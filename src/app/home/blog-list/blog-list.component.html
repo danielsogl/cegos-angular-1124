@@ -1,2 +1,13 @@
 <h2>Existing Blog-Entries:</h2>
-<!-- <p>{{entries.length}} entries available</p> -->
+<p>{{ blogentries.length }} entries available</p>
+
+<!-- new control flow syntax -->
+@for (entry of blogentries; track $index) {
+<app-blog-entry [entry]="entry" />
+} @empty {
+<p>No entries available</p>
+}
+
+<!-- Old syntax with structural directives -->
+<!-- <app-blog-entry *ngFor="let entry of blogentries" [entry]="entry" />
+<p *ngIf="blogentries.length === 0">No entries available</p> -->
