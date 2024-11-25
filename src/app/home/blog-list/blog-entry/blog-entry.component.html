@@ -1,6 +1,6 @@
-<!-- <div class="entry">
+<div class="entry">
   <div class="image">
-    <img src="{{ entry.image }}" alt="Blog Image" />
+    <img [src]="entry.image" alt="Blog Image" />
   </div>
   <div class="blog-text">
     <span class="title">
@@ -8,4 +8,6 @@
     </span>
     <p>{{ entry.text }}</p>
   </div>
-</div> -->
+</div>
+
+<button (click)="changeTitle()">Change title</button>
