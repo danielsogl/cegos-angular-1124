@@ -4,6 +4,7 @@ import { Entry } from './entry';
 import { BlogEntryComponent } from './blog-list/blog-entry/blog-entry.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { FormsModule } from '@angular/forms';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     BlogFormComponent,
     BlogEntryComponent,
     FormsModule,
+    CardComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
