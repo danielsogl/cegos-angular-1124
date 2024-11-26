@@ -13,6 +13,9 @@ import {
 
 import { routes } from './app.routes';
 import { BASE_URL } from './config/config.token';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './auth.interceptor';
+import { errorInterceptor } from './error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,13 +27,14 @@ export const appConfig: ApplicationConfig = {
       // preload all lazy routes when browser is idles
       withPreloading(PreloadAllModules)
     ),
+    provideHttpClient(withInterceptors([authInterceptor, errorInterceptor])),
     // old way of providing routes using modules
-    importProvidersFrom(
-      RouterModule.forRoot(routes, {
-        bindToComponentInputs: true,
-        preloadingStrategy: PreloadAllModules,
-      })
-    ),
+    importProvidersFrom(),
+    // RouterModule.forRoot(routes, {
+    //   bindToComponentInputs: true,
+    //   preloadingStrategy: PreloadAllModules,
+    // })
+    // HttpClientModule
     {
       provide: BASE_URL,
       useValue: 'https://myapi.com',
