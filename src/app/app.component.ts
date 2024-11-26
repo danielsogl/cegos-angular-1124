@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { HomeComponent } from './home/home.component';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [HomeComponent],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  // alternate way to define template and styles
-
-  // template: `<h1>Hello World</h1>`,
-  // styles: ['h1 { font-weight: normal; }'],
-  // styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'blog-app';
+  private readonly router = inject(Router);
+
+  navigateTo(url: string): void {
+    this.router.navigateByUrl(url);
+    // alternative way to navigate
+    // this.router.navigate([url]);
+  }
 }

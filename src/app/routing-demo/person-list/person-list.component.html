@@ -1,0 +1,12 @@
+<ul>
+  @for (person of persons; track $index) {
+  <li>
+    <!-- http://localhost:4200/persons/123?foo=foo&bar=bar -->
+    <a
+      [routerLink]="[person.socialID]"
+      [queryParams]="{ foo: 'foo', bar: 'bar' }"
+      >{{ person.name }}</a
+    >
+  </li>
+  }
+</ul>
