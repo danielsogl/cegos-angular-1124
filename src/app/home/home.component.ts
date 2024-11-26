@@ -4,11 +4,12 @@ import { BlogEntryService } from './blog-entry.service';
 import { BlogFormComponent } from './blog-form/blog-form.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { Entry } from './entry';
+import { ProductsModule } from '../products/products.module';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [BlogListComponent, BlogFormComponent, FormsModule],
+  imports: [BlogListComponent, BlogFormComponent, FormsModule, ProductsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
