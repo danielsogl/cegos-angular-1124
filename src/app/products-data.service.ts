@@ -7,13 +7,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductsDataService {
-  private readonly url = 'https://dummyjson.com/productsss';
+  private readonly url = 'https://dummyjson.com/products';
   private readonly http = inject(HttpClient);
 
-  getPosts(): Observable<ProductsResponse> {
-    return this.http.get<ProductsResponse>(this.url, {
+  getProducts(): Observable<ProductsResponse> {
+    return this.http.get<ProductsResponse>(this.url);
+  }
+
+  searchProducts(
+    props: {
+      searchString: string;
+      limit: number;
+    } = { searchString: '', limit: 10 }
+  ): Observable<ProductsResponse> {
+    const { limit, searchString: q } = props;
+
+    return this.http.get<ProductsResponse>(`${this.url}/search`, {
       params: {
-        limit: 1,
+        q,
+        limit,
       },
     });
   }
