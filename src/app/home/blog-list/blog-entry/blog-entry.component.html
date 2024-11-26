@@ -4,7 +4,8 @@
   </div>
   <div class="blog-text">
     <span class="title">
-      {{ entry.title }}
+      {{ entry.title | customTitle : "lowercase" | uppercase }}
+      <!-- {{ today | date : "dd.MM.YYYY" : "Europe/Berlin" }} -->
     </span>
     <p>{{ entry.text }}</p>
   </div>

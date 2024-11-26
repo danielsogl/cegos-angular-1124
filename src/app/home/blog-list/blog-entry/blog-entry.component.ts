@@ -1,20 +1,19 @@
+import { DatePipe, UpperCasePipe } from '@angular/common';
 import {
   Component,
   EventEmitter,
   Input,
   numberAttribute,
-  OnChanges,
-  OnDestroy,
-  OnInit,
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { CustomTitlePipe } from '../../custom-title.pipe';
 import { Entry } from '../../entry';
 
 @Component({
   selector: 'app-blog-entry',
   standalone: true,
-  imports: [],
+  imports: [CustomTitlePipe, UpperCasePipe],
   templateUrl: './blog-entry.component.html',
   styleUrl: './blog-entry.component.css',
 })
@@ -28,9 +27,7 @@ export class BlogEntryComponent {
   // transform input values using the transform function
   @Input({ transform: numberAttribute }) value!: number;
 
-  constructor() {
-    console.log(this.entry);
-  }
+  public readonly today = new Date().toISOString();
 
   ngOnChanges(changes: SimpleChanges): void {
     // console.log(changes['entry']);
