@@ -8,7 +8,7 @@ import { Entry } from '../entry';
   styleUrl: './blog-form.component.css',
 })
 export class BlogFormComponent {
-  @Output() entryaddevent = new EventEmitter();
+  @Output() entryaddevent = new EventEmitter<Entry>();
 
   newentry: Entry;
 

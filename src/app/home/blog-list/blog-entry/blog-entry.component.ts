@@ -3,7 +3,11 @@ import {
   EventEmitter,
   Input,
   numberAttribute,
+  OnChanges,
+  OnDestroy,
+  OnInit,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { Entry } from '../../entry';
 
@@ -23,6 +27,23 @@ export class BlogEntryComponent {
 
   // transform input values using the transform function
   @Input({ transform: numberAttribute }) value!: number;
+
+  constructor() {
+    console.log(this.entry);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // console.log(changes['entry']);
+  }
+
+  ngOnInit(): void {
+    console.log('BlogEntryComponent initialized');
+    console.log(this.entry);
+  }
+
+  ngOnDestroy(): void {
+    console.log('BlogEntryComponent destroyed');
+  }
 
   changeTitle(): void {
     // change the title by accessing the object property

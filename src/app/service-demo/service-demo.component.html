@@ -1,0 +1,39 @@
+<!-- service-demo.component.html -->
+<h1>Demotemplate for Angular Services</h1>
+<h2>Display a simple list of strings</h2>
+<ul>
+  <li *ngFor="let name of namesList">Hi {{ name }}</li>
+</ul>
+<hr />
+<h2>Use a table to display Persons</h2>
+<table class="table table-striped">
+  <tr>
+    <th>Social ID</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let person of personsList">
+    <td>{{ person.socialID }}</td>
+    <td>{{ person.name }}</td>
+  </tr>
+</table>
+<hr />
+<h2>Select a person by social ID</h2>
+<input type="number" [(ngModel)]="selectedID" />
+<button (click)="findPersonById()">Search 🔎</button>
+<div *ngIf="selectedPerson != undefined">
+  <!-- Question marks may be necessary when not checking for "undefined" with ngIf -->
+  <!-- <p>{{selectedPerson?.socialID}}: {{selectedPerson?.name}}</p> -->
+  <p>{{ selectedPerson.socialID }}: {{ selectedPerson.name }}</p>
+</div>
+<hr />
+<h2>Find all persons where a substring of the id matches ("filter")</h2>
+<table class="table table-striped">
+  <tr>
+    <th>Social ID</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let person of filteredPersonsList">
+    <td>{{ person.socialID }}</td>
+    <td>{{ person.name }}</td>
+  </tr>
+</table>

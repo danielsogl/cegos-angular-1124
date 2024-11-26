@@ -1,29 +1,5 @@
 <!--home.component.html-->
 <h1>The Angular Blog 📝</h1>
-
-<!-- Content projection example -->
-<!-- <app-card title="Foo">
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis libero,
-    iure quidem sit unde nesciunt veniam sed voluptatibus nostrum, fuga at
-    cumque atque laborum perspiciatis veritatis! Modi quidem quis sapiente!
-  </p>
-</app-card> -->
-
-<button (click)="foo()">Click me!</button>
-
-<h2>{{ dataService.dummysingleentry.title }}</h2>
-
-<!-- Step 1: add a single dummy entry directly -->
-<app-blog-entry
-  [entry]="dataService.dummysingleentry"
-  (entryChange)="dataService.dummysingleentry = $event"
-></app-blog-entry>
-
-<!-- With double data binding -->
-<app-blog-entry [(entry)]="dataService.dummysingleentry"></app-blog-entry>
-
-<!-- Step 2: forward a full list of entries to the blog-list component -->
-<app-blog-list [blogentries]="dataService.blogentries"></app-blog-list>
+<app-blog-list [blogentries]="entries"></app-blog-list>
 <hr />
 <app-blog-form (entryaddevent)="handleEntryAddEvent($event)"></app-blog-form>
