@@ -5,6 +5,7 @@ import { DataService, getBlogPosts } from '../services/data.service';
 import { BlogFormComponent } from './blog-form/blog-form.component';
 import { BlogEntryComponent } from './blog-list/blog-entry/blog-entry.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
+import { Entry } from './entry';
 
 @Component({
   selector: 'app-home',
@@ -36,5 +37,9 @@ export class HomeComponent {
     // injection context
     const service = inject(DataService);
     console.log('Service: ' + service.blogentries);
+  }
+
+  handleEntryAddEvent(entry: Entry) {
+    // TODO: add entry to list using the service
   }
 }
