@@ -30,19 +30,19 @@ export class ProductsDataService {
     });
   }
 
-  getPostById(id: number): Observable<ProductsResponse> {
-    return this.http.get<ProductsResponse>(`${this.url}/${id}`);
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${this.url}/${id}`);
   }
 
-  addPost(post: Product): Observable<ProductsResponse> {
+  addProduct(post: Product): Observable<ProductsResponse> {
     return this.http.post<ProductsResponse>(this.url, post);
   }
 
-  updatePost(post: Product): Observable<ProductsResponse> {
+  updateProduct(post: Product): Observable<ProductsResponse> {
     return this.http.put<ProductsResponse>(`${this.url}/${post.id}`, post);
   }
 
-  deletePost(id: number): Observable<ProductsResponse> {
+  deleteProduct(id: number): Observable<ProductsResponse> {
     return this.http.delete<ProductsResponse>(`${this.url}/${id}`);
   }
 }

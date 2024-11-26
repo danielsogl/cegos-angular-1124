@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ProductsDataService } from '../products-data.service';
 import { Product } from '../product';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rest-demo',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './rest-demo.component.html',
   styleUrl: './rest-demo.component.css',
 })

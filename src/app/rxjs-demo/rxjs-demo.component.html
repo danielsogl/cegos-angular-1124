@@ -1,0 +1,9 @@
+<button (click)="increment()">Increment Subject</button>
+<p>Subject: {{ subjectCounter }}</p>
+<p>BehaviorSubject: {{ behaviorSubject.value }}</p>
+
+<button (click)="showReplaySubjectCounter()">Show Replay Subject Values</button>
+<p>Replay Subject Value: {{ replaySubjectCounter }}</p>
+
+<button (click)="completeAsyncSubject()">Complete Async Subject</button>
+<p>Async Subject Value: {{ asyncSubjectCounter }}</p>

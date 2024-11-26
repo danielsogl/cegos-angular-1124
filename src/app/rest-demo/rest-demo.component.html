@@ -10,6 +10,8 @@
 
 <ul>
   @for (product of products; track $index) {
-  <li>{{ product.title }}</li>
+  <li>
+    <a [routerLink]="[product.id]">{{ product.title }}</a>
+  </li>
   }
 </ul>

@@ -3,6 +3,8 @@ import { HomeComponent } from './home';
 import { PersonDetailsComponent } from './routing-demo/person-details/person-details.component';
 import { PersonListComponent } from './routing-demo/person-list/person-list.component';
 import { RestDemoComponent } from './rest-demo/rest-demo.component';
+import { RxjsDemoComponent } from './rxjs-demo/rxjs-demo.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 export const routes: Routes = [
   // navigate to home when path is empty
@@ -17,6 +19,8 @@ export const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: 'rest-demo', component: RestDemoComponent },
+  { path: 'rest-demo/:id', component: ProductDetailsComponent },
+  { path: 'rxjs-demo', component: RxjsDemoComponent },
   { path: 'persons', component: PersonListComponent },
   { path: 'persons/:id', component: PersonDetailsComponent },
   // fallback route if user enters a invalid url
