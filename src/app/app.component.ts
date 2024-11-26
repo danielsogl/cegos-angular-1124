@@ -1,3 +1,4 @@
+import { NgClass, NgStyle } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 

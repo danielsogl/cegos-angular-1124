@@ -16,10 +16,12 @@ import {
   shareReplay,
 } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CustomColorDirective } from '../custom-color.directive';
+import { ConfirmDirective } from '../confirm.directive';
 
 @Component({
   selector: 'app-product-details',
-  imports: [JsonPipe, AsyncPipe],
+  imports: [JsonPipe, AsyncPipe, CustomColorDirective, ConfirmDirective],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
 })
@@ -58,7 +60,6 @@ export class ProductDetailsComponent implements OnInit {
   );
 
   public interval$ = interval(1000).pipe(
-    tap((interval) => console.log('Interval:', interval)),
     // automatically complete observable when the component gets destroyed
     takeUntilDestroyed(this.destroyRef)
   );
@@ -78,5 +79,9 @@ export class ProductDetailsComponent implements OnInit {
     //   this.product = product;
     // });
     this.interval$.subscribe();
+  }
+
+  onConfirm() {
+    console.log('Confirmed');
   }
 }
