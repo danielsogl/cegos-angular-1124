@@ -1,20 +1,72 @@
 <h2>Create a new entry:</h2>
-<div class="form">
+
+<form class="form" #form="ngForm">
+  <p>Valid: {{ form.valid }}</p>
+
   <div class="form-elem">
     <label for="title">Title:</label>
-    <input type="text" id="title" #title />
+    <input
+      type="text"
+      id="title"
+      name="title"
+      [(ngModel)]="newentry.title"
+      required
+      minlength="10"
+      maxlength="25"
+    />
+    <app-form-error
+      [formErrors]="form.controls['title'].errors"
+      label="Title"
+    />
+  </div>
+  <div class="form-elem">
+    <label for="rating">Rating:</label>
+    <input
+      type="number"
+      id="rating"
+      name="rating"
+      [(ngModel)]="newentry.rating"
+      required
+      min="1"
+      max="5"
+    />
+  </div>
+  <div class="form-elem">
+    <label for="date">Date:</label>
+    <input
+      type="text"
+      id="date"
+      name="date"
+      [(ngModel)]="newentry.date"
+      required
+      email
+    />
   </div>
   <div class="form-elem">
     <label for="title">Image-URL:</label>
-    <input type="text" id="image" #image />
+    <input
+      type="text"
+      id="image"
+      name="image"
+      [(ngModel)]="newentry.image"
+      required
+    />
   </div>
   <div class="form-elem">
     <label for="text">Text:</label>
-    <textarea id="text" cols="20" rows="3" #text> </textarea>
+    <textarea
+      id="text"
+      name="text"
+      cols="20"
+      rows="3"
+      [(ngModel)]="newentry.text"
+      required
+    >
+    </textarea>
   </div>
   <div>
-    <button (click)="emitNewEntry(image.value, title.value, text.value)">
+    <button (click)="emitNewEntry()" [disabled]="form.invalid">
       Create entry
     </button>
   </div>
-</div>
+</form>

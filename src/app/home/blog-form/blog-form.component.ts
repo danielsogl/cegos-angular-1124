@@ -1,14 +1,19 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Entry } from '../entry';
+import { FormsModule, NgForm } from '@angular/forms';
+import { JsonPipe, KeyValuePipe } from '@angular/common';
+import { FormErrorComponent } from '../../form-error/form-error.component';
 
 @Component({
   selector: 'app-blog-form',
-  imports: [],
+  imports: [FormsModule, JsonPipe, FormErrorComponent],
   templateUrl: './blog-form.component.html',
   styleUrl: './blog-form.component.css',
 })
 export class BlogFormComponent {
   @Output() entryaddevent = new EventEmitter<Entry>();
+
+  @ViewChild('form', { static: true }) form!: NgForm;
 
   newentry: Entry;
 
@@ -20,7 +25,8 @@ export class BlogFormComponent {
     };
   }
 
-  emitNewEntry(image: string, title: string, text: string) {
+  emitNewEntry() {
+    const { image, text, title } = this.form.value;
     if (image != '' && title != '' && text != '') {
       this.newentry = { image: image, title: title, text: text };
       this.entryaddevent.emit(this.newentry);

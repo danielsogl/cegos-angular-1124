@@ -60,3 +60,11 @@ img {
 textarea {
   height: 40%;
 }
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+input.ng-valid {
+  border-color: green;
+}

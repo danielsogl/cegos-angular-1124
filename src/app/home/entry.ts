@@ -3,4 +3,6 @@ export interface Entry {
   image: string;
   title: string;
   text: string;
+  rating?: number;
+  date?: string;
 }
