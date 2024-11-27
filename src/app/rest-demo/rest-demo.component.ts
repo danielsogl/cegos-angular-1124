@@ -1,36 +1,33 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ProductsDataService } from '../products-data.service';
-import { Product } from '../product';
-import { FormsModule } from '@angular/forms';
+import { AsyncPipe } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { combineLatest, map, switchMap } from 'rxjs';
+import { ProductsDataService } from '../products-data.service';
 
 @Component({
   selector: 'app-rest-demo',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, ReactiveFormsModule, AsyncPipe],
   templateUrl: './rest-demo.component.html',
   styleUrl: './rest-demo.component.css',
 })
-export class RestDemoComponent implements OnInit {
+export class RestDemoComponent {
   private readonly productsData = inject(ProductsDataService);
-  public products: Product[] = [];
 
-  public searchString = '';
-  public resultLimit = 10;
+  public searchControl = new FormControl('');
+  public limitControl = new FormControl(10);
 
-  ngOnInit(): void {
-    this.productsData.getProducts().subscribe(({ products }) => {
-      this.products = products;
-    });
-  }
-
-  search(): void {
-    this.productsData
-      .searchProducts({
-        searchString: this.searchString,
-        limit: this.resultLimit,
-      })
-      .subscribe(({ products }) => {
-        this.products = products;
-      });
-  }
+  public products$ = combineLatest({
+    searchValue: this.searchControl.valueChanges,
+    limitValue: this.limitControl.valueChanges,
+  }).pipe(
+    switchMap(({ limitValue, searchValue }) => {
+      return this.productsData
+        .searchProducts({
+          searchString: searchValue || '',
+          limit: limitValue || 0,
+        })
+        .pipe(map(({ products }) => products));
+    })
+  );
 }

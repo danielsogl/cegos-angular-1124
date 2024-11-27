@@ -6,7 +6,7 @@ import {
   Validator,
 } from '@angular/forms';
 
-const validNames = ['Luke', 'Leia', 'Han', 'Chewbacca', 'Yoda', 'Picard'];
+const validNames = ['Luke', 'Leia', 'Han', 'Chewbacca', 'Yoda'];
 
 @Directive({
   // scoped because of type string

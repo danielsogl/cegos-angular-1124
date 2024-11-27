@@ -7,6 +7,7 @@ import { RxjsDemoComponent } from './rxjs-demo/rxjs-demo.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { PersonTemplateFormComponent } from './forms/person-template-form/person-template-form.component';
 import { ChangePasswordFormComponent } from './forms/change-password-form/change-password-form.component';
+import { PersonReactiveFormComponent } from './forms/person-reactive-form/person-reactive-form.component';
 
 export const routes: Routes = [
   // navigate to home when path is empty
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: 'persons/:id', component: PersonDetailsComponent },
   { path: 'forms/template', component: PersonTemplateFormComponent },
   { path: 'forms/template-multi', component: ChangePasswordFormComponent },
+  { path: 'forms/reactive', component: PersonReactiveFormComponent },
   // fallback route if user enters a invalid url
   { path: '**', redirectTo: '' },
 ];

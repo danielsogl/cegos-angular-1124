@@ -26,7 +26,7 @@ export class BlogFormComponent {
   }
 
   emitNewEntry() {
-    const { image, text, title } = this.form.value;
+    const { image, text, title } = this.form.value as Entry;
     if (image != '' && title != '' && text != '') {
       this.newentry = { image: image, title: title, text: text };
       this.entryaddevent.emit(this.newentry);

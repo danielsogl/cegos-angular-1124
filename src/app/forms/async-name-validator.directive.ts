@@ -40,7 +40,7 @@ export class AsyncNameValidatorDirective implements AsyncValidator {
   }
 }
 
-interface StarWarsPersonResponse {
+export interface StarWarsPersonResponse {
   count: number;
   next?: any;
   previous?: any;
