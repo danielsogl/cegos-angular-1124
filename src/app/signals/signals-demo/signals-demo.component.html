@@ -1,0 +1,9 @@
+<input type="text" [(ngModel)]="name" />
+<input type="text" [(ngModel)]="surname" />
+
+<p>{{ fullName() }}</p>
+
+<input type="text" [(ngModel)]="searchTerm" />
+@for (product of products(); track $index) {
+<p>{{ product.title }}</p>
+}

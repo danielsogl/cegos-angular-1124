@@ -8,6 +8,12 @@ import {
 } from '@angular/forms';
 import { asyncNameValidator, validateName } from './person.validators';
 import { HttpClient } from '@angular/common/http';
+import {
+  outputFromObservable,
+  toObservable,
+  toSignal,
+} from '@angular/core/rxjs-interop';
+import { of } from 'rxjs';
 
 interface Person {
   name: string;
@@ -71,6 +77,13 @@ export class PersonReactiveFormComponent implements OnInit {
       nonNullable: true,
     }),
   });
+
+  public readonly nameSignal = toSignal(
+    this.form.controls['name'].valueChanges,
+    { initialValue: '' }
+  );
+  public readonly name$ = toObservable(this.nameSignal);
+  public readonly formChange = outputFromObservable(this.form.valueChanges);
 
   ngOnInit(): void {
     this.form.get('name')?.valueChanges.subscribe((value) => {
