@@ -68,3 +68,7 @@ input.ng-invalid.ng-touched {
 input.ng-valid {
   border-color: green;
 }
+
+span.error {
+  color: red;
+}

@@ -1,0 +1,18 @@
+@if (control.errors; as errors) {
+<!--  -->
+@if(control.touched) {
+<span class="error">
+  <!--  -->
+  @if (errors['min']; as minError) {
+  {{ control.name | titlecase }} must be at least {{ minError.min }}. }
+  <!--  -->
+  @if (errors['required']; as requiredError) { {{ control.name | titlecase }} is
+  required. }
+  <!--  -->
+  @if (errors['invalidName']; as invalidNameError) {
+  {{ control.name | titlecase }} is invalid. }
+  <!--  -->
+</span>
+}
+<!--  -->
+}
